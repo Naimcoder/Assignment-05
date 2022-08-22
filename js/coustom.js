@@ -1,36 +1,42 @@
-const cartArrey = [];
-// ===========================================================
-function display(cardList) {
-     // ---------
-     const listItem = document.getElementById('crad-list');
-     listItem.innerHTML = '';
-     // ---------
-     for (let index = 0; index < cardList.length; index++) {
-          // ---------
-          const name = cartArrey[index];
-          // ---------
-          if (cartArrey.length > 5) {
-               break;
-          }
-          // ---------
-          const ol = document.createElement('ol');
-          ol.innerHTML = `
-           <li>${name}</li>
-          `;
-          listItem.appendChild(ol);
-          // ---------
-     }
-}
-// ========================================================
-
-// ============================================================
+const players = [];
+// =========================================================
 function select(element) {
      const playerName = element.parentNode.children[0].innerText;
-     cartArrey.push(playerName);
-     display(cartArrey);
+     const playersObj = {
+          playerName: playerName
+     };
+     players.push(playersObj);
+     // error handling
+     if (players.length <= 5){
+          // document.getElementById('selected-player-number').innerText = players.length;
+          const select = element;
+          select.innerText = 'selected';
+          select.setAttribute('disabled', true);
+          console.log(select);
+     } else {
+          return alert('You cant add more than 5 Players')
+     }
+     setPlayerName(players);
+     console.log(players);
+
 }
-// ==================================================================
- 
+// ==========================================
+function setPlayerName(nameList) {
+
+     const tableBody = document.getElementById('selected-player-list');
+     tableBody.innerHTML = '';
+     for (let i = 0; i < nameList.length; i++) {
+          const names = nameList[i].playerName;
+          console.log(names);
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+          <th scope="row">${i + 1}</th>
+          <td>${names}</td>
+          `;
+          tableBody.appendChild(tr);
+     }
+} 
+// ================================================================
 // buget part start 
 // =================================================================
 function getInputTextValueById(inputId) {
@@ -57,16 +63,22 @@ document.getElementById('calculat-total-btn').addEventListener('click', function
      const ExpensesTotalElement = getElementTextValueById('Expenses-Total');
      const ManagerTotalNumber = getInputTextValueById('manager-input-fild');
      const coashTotalNumber = getInputTextValueById('coach-input-fild');
+     //  calculate total
+     if (isNaN(ManagerTotalNumber) || isNaN(coashTotalNumber)) {
+          return alert('You have to type number must')
+     }
      const totalBalanceAmount = ExpensesTotalElement + ManagerTotalNumber + coashTotalNumber;
-
      setTextValueById('total-Amount', totalBalanceAmount);
 
 });
 document.getElementById('Calculate-btn').addEventListener('click', function () {
      const playerElementTotalNumber = getInputTextValueById('player-input-fild');
-     const totalAmount = playerElementTotalNumber * 5;
-     setTextValueById('Expenses-Total', totalAmount);
-      
+     if (isNaN(playerElementTotalNumber)) {
+          return alert('You have to type number must')
+     }
+     let number = players.length;
+     const totalAmount = playerElementTotalNumber * number;
+     setTextValueById('Expenses-Total', totalAmount);  
 })
 // buget part end 
 // =========================================================
