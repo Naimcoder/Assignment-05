@@ -10,7 +10,7 @@ function select(element) {
      players.push(playersObj);
      // error handling
      if (players.length <= 5){
-          // document.getElementById('selected-player-number').innerText = players.length;
+      document.getElementById('selected-player-number').innerText = players.length;
           const select = element;
           select.innerText = 'selected';
           select.setAttribute('disabled', true);
@@ -61,15 +61,17 @@ function setTextValueById(ElementId, Newvalue) {
 // ==========================================================================
 // calculate  start
 document.getElementById('Calculate-btn').addEventListener('click', function () {
-
+     const selectedPlayerNumber = getElementTextValueById('selected-player-number');
      const playerElementTotalNumber = getInputTextValueById('player-input-fild');
-     
+
      if (isNaN(playerElementTotalNumber)) {
           return alert('You have to type number must')
      }
-
-     let number = players.length;
-     const totalAmount = playerElementTotalNumber * number;
+     
+     const totalAmount = playerElementTotalNumber * selectedPlayerNumber;
+     if (isNaN(totalAmount)) {
+          return alert('You have to type number must')
+     }
      setTextValueById('Expenses-Total', totalAmount);
 })
 // ==========================================================================
