@@ -11,8 +11,6 @@ function display(cardList) {
           // ---------
           if (cartArrey.length > 5) {
                break;
-          } else {
-               alert('five')
           }
           // ---------
           const ol = document.createElement('ol');
