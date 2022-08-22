@@ -42,6 +42,7 @@ function getInputTextValueById(inputId) {
      const inputfild = document.getElementById(inputId);
      const inputstring = inputfild.value;
      const inputNumber = parseInt(inputstring);
+     inputfild.value = '';
      return inputNumber;
 }
 
@@ -63,16 +64,19 @@ function setTextValueById(ElementId, Newvalue) {
 document.getElementById('Calculate-btn').addEventListener('click', function () {
      const selectedPlayerNumber = getElementTextValueById('selected-player-number');
      const playerElementTotalNumber = getInputTextValueById('player-input-fild');
+    
 
-     if (isNaN(playerElementTotalNumber)) {
-          return alert('You have to type number must')
+     if (isNaN(playerElementTotalNumber) || playerElementTotalNumber<0) {
+          return alert('You have to type number must');
      }
-     
+   
      const totalAmount = playerElementTotalNumber * selectedPlayerNumber;
      if (isNaN(totalAmount)) {
           return alert('You have to type number must')
      }
      setTextValueById('Expenses-Total', totalAmount);
+
+    
 })
 // ==========================================================================
 // calculate  End
@@ -85,8 +89,10 @@ document.getElementById('calculat-total-btn').addEventListener('click', function
      const ManagerTotalNumber = getInputTextValueById('manager-input-fild');
      const coashTotalNumber = getInputTextValueById('coach-input-fild');
      //  calculate total
-     if (isNaN(ManagerTotalNumber) || isNaN(coashTotalNumber) || ManagerTotalNumber < 0 || coashTotalNumber < 0) {
+     if (isNaN(ManagerTotalNumber) || isNaN(coashTotalNumber)) {
           return alert('You have to type number must')
+     } else if (ManagerTotalNumber < 0 || coashTotalNumber < 0) {
+          return alert('Negative Number not allowed');
      }
      const totalBalanceAmount = ExpensesTotalElement + ManagerTotalNumber + coashTotalNumber;
      setTextValueById('total-Amount', totalBalanceAmount);
