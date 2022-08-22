@@ -27,7 +27,7 @@ body {
 .banner_text h1 {
      margin-top: 100px;
      text-align: center;
-     font-size: 50px;
+     font-size: 55px;
      font-weight: 600;
      padding-top: 50px;
      color: #FF5E19;
@@ -36,7 +36,7 @@ body {
 .banner_text p {
      margin-top: 20px;
      margin-bottom: 20px;
-     font-size: 20px;
+     font-size: 18px;
      text-align: center;
      color: white;
      line-height: 34px;
