@@ -83,7 +83,7 @@ document.getElementById('calculat-total-btn').addEventListener('click', function
      const ManagerTotalNumber = getInputTextValueById('manager-input-fild');
      const coashTotalNumber = getInputTextValueById('coach-input-fild');
      //  calculate total
-     if (isNaN(ManagerTotalNumber) || isNaN(coashTotalNumber)) {
+     if (isNaN(ManagerTotalNumber) || isNaN(coashTotalNumber) || ManagerTotalNumber < 0 || coashTotalNumber < 0) {
           return alert('You have to type number must')
      }
      const totalBalanceAmount = ExpensesTotalElement + ManagerTotalNumber + coashTotalNumber;
