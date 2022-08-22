@@ -1,5 +1,7 @@
+// player cart selection start
+// ======================================================================
 const players = [];
-// =========================================================
+
 function select(element) {
      const playerName = element.parentNode.children[0].innerText;
      const playersObj = {
@@ -14,15 +16,13 @@ function select(element) {
           select.setAttribute('disabled', true);
           console.log(select);
      } else {
-          return alert('You cant add more than 5 Players')
+          return alert('You cant add more than 5 Players');
      }
      setPlayerName(players);
      console.log(players);
-
 }
-// ==========================================
-function setPlayerName(nameList) {
 
+function setPlayerName(nameList) {
      const tableBody = document.getElementById('selected-player-list');
      tableBody.innerHTML = '';
      for (let i = 0; i < nameList.length; i++) {
@@ -36,9 +36,10 @@ function setPlayerName(nameList) {
           tableBody.appendChild(tr);
      }
 } 
-// ================================================================
-// buget part start 
-// =================================================================
+// player cart selection end
+// ======================================================================
+
+// common js function start
 function getInputTextValueById(inputId) {
      const inputfild = document.getElementById(inputId);
      const inputstring = inputfild.value;
@@ -57,8 +58,25 @@ function setTextValueById(ElementId, Newvalue) {
      const ElementNumber = document.getElementById(ElementId);
      ElementNumber.innerText = Newvalue;
 }
+// common js function End
 
 // ==========================================================================
+// calculate  start
+document.getElementById('Calculate-btn').addEventListener('click', function () {
+     const playerElementTotalNumber = getInputTextValueById('player-input-fild');
+     if (isNaN(playerElementTotalNumber)) {
+          return alert('You have to type number must')
+     }
+     let number = players.length;
+     const totalAmount = playerElementTotalNumber * number;
+     setTextValueById('Expenses-Total', totalAmount);
+})
+// ==========================================================================
+// calculate  End
+
+
+// ==========================================================================
+// calculate total start
 document.getElementById('calculat-total-btn').addEventListener('click', function () {
      const ExpensesTotalElement = getElementTextValueById('Expenses-Total');
      const ManagerTotalNumber = getInputTextValueById('manager-input-fild');
@@ -69,16 +87,7 @@ document.getElementById('calculat-total-btn').addEventListener('click', function
      }
      const totalBalanceAmount = ExpensesTotalElement + ManagerTotalNumber + coashTotalNumber;
      setTextValueById('total-Amount', totalBalanceAmount);
-
 });
-document.getElementById('Calculate-btn').addEventListener('click', function () {
-     const playerElementTotalNumber = getInputTextValueById('player-input-fild');
-     if (isNaN(playerElementTotalNumber)) {
-          return alert('You have to type number must')
-     }
-     let number = players.length;
-     const totalAmount = playerElementTotalNumber * number;
-     setTextValueById('Expenses-Total', totalAmount);  
-})
-// buget part end 
-// =========================================================
+// ==========================================================================
+// calculate total start
+
