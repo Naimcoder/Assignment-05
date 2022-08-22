@@ -19,7 +19,6 @@ function select(element) {
           return alert('You cant add more than 5 Players');
      }
      setPlayerName(players);
-     console.log(players);
 }
 
 function setPlayerName(nameList) {
@@ -27,7 +26,6 @@ function setPlayerName(nameList) {
      tableBody.innerHTML = '';
      for (let i = 0; i < nameList.length; i++) {
           const names = nameList[i].playerName;
-          console.log(names);
           const tr = document.createElement("tr");
           tr.innerHTML = `
           <th scope="row">${i + 1}</th>
@@ -63,10 +61,13 @@ function setTextValueById(ElementId, Newvalue) {
 // ==========================================================================
 // calculate  start
 document.getElementById('Calculate-btn').addEventListener('click', function () {
+
      const playerElementTotalNumber = getInputTextValueById('player-input-fild');
+     
      if (isNaN(playerElementTotalNumber)) {
           return alert('You have to type number must')
      }
+
      let number = players.length;
      const totalAmount = playerElementTotalNumber * number;
      setTextValueById('Expenses-Total', totalAmount);
