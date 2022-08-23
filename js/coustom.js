@@ -14,7 +14,6 @@ function select(element) {
           const select = element;
           select.innerText = 'selected';
           select.setAttribute('disabled', true);
-          console.log(select);
      } else {
           return alert('You cant add more than 5 Players');
      }
@@ -84,17 +83,17 @@ document.getElementById('Calculate-btn').addEventListener('click', function () {
 
 // ==========================================================================
 // calculate total start
-document.getElementById('calculat-total-btn').addEventListener('click', function () {
+document.getElementById('calculate-total-btn').addEventListener('click', function () {
      const ExpensesTotalElement = getElementTextValueById('Expenses-Total');
      const ManagerTotalNumber = getInputTextValueById('manager-input-fild');
-     const coashTotalNumber = getInputTextValueById('coach-input-fild');
+     const coachTotalNumber = getInputTextValueById('coach-input-fild');
      //  calculate total
-     if (isNaN(ManagerTotalNumber) || isNaN(coashTotalNumber)) {
+     if (isNaN(ManagerTotalNumber) || isNaN(coachTotalNumber)) {
           return alert('You have to type number must')
-     } else if (ManagerTotalNumber < 0 || coashTotalNumber < 0) {
+     } else if (ManagerTotalNumber < 0 || coachTotalNumber < 0) {
           return alert('Negative Number not allowed');
      }
-     const totalBalanceAmount = ExpensesTotalElement + ManagerTotalNumber + coashTotalNumber;
+     const totalBalanceAmount = ExpensesTotalElement + ManagerTotalNumber + coachTotalNumber;
      setTextValueById('total-Amount', totalBalanceAmount);
 });
 // ==========================================================================
